@@ -1,19 +1,17 @@
-module.exports = function recursion(tree){
-  const arr=[];
-
-  function recursionarr(tree, index, array){
-    if(!array[index]){
-      array[index]=[];
+module.exports = function recursion(tree) {
+  const arr = [];
+  function recursionarr(treeobj, index, arrtree) {
+    if (!arrtree[index]) {
+      arrtree[index] = [];
     }
-    array[index].push(tree.value);
-    if("left" in tree){
-      recursionarr(tree.left,index+1,array);
+    arrtree[index].push(treeobj.value);
+    if ('left' in treeobj) {
+      recursionarr(treeobj.left, index + 1, arrtree);
     }
-    if("right" in tree){
-      recursionarr(tree.right, index+1, array);
+    if ('right' in treeobj) {
+      recursionarr(treeobj.right, index + 1, arrtree);
     }
   }
-  
-  recursionarr(tree,0,arr);
+  recursionarr(tree, 0, arr);
   return arr;
-}
+};
